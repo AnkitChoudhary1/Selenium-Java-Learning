@@ -17,6 +17,8 @@ public class WithDifferentMethods {
         else{
             System.out.println("Not correct");
         }
+        //Was this added or not in the repo
+        driver.quit();
 
     }
 
