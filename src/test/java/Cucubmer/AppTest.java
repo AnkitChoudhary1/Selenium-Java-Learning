@@ -1,38 +1,38 @@
-package Cucubmer;
+package Cucubmer;  // This must match your folder name exactly
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
+public class AppTest { // This must match your filename (AppTest)
+    public static void main(String[] args) throws InterruptedException {
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
+        // 1. Launch Chrome
+        WebDriver driver = new ChromeDriver();
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+        // 2. Go to SauceDemo
+        driver.get("https://www.saucedemo.com/");
+        driver.manage().window().maximize();
+
+        // 3. Find Username using CSS SELECTOR
+        driver.findElement(By.cssSelector("input[data-test='username']")).sendKeys("standard_user");
+
+        // 4. Find Password using XPATH
+        driver.findElement(By.xpath("//input[@name='password']")).sendKeys("secret_sauce");
+
+        // 5. Click Login using XPATH TEXT SEARCH
+        driver.findElement(By.xpath("//input[contains(@id,'login')]")).click();
+
+        // 6. Verification
+        Thread.sleep(2000);
+
+        if(driver.getCurrentUrl().contains("inventory")) {
+            System.out.println("✅ SUCCESS: Login Passed!");
+        } else {
+            System.out.println("❌ FAILED: Login Failed");
+        }
+
+        // 7. Close Browser
+        driver.quit();
     }
 }
