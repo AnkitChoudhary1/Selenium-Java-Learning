@@ -2,7 +2,10 @@ package Cucubmer;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.List;
 
 public class lyearLogin {
     public static void main(String[] args) throws InterruptedException {
@@ -14,6 +17,15 @@ public class lyearLogin {
         driver.findElement(By.xpath("//*[@placeholder='Enter your password']")).sendKeys("play@1234");
         driver.findElement(By.xpath("//*[text()='Continue']")).click();
         Thread.sleep(4000);
+        List<WebElement> count =driver.findElements(By.xpath("//*[contains(text(), 'Hey Developer Lyearn ')]"));
+        if (count.size()==2){
+            System.out.print("Correct count is 2");
+            System.out.print(" "+count.size());
+
+        }
+        else{
+            System.out.print("Count is not correct");
+        }
         driver.quit();
     }
 }
