@@ -32,5 +32,13 @@ public class DropdownPractice {
         Thread.sleep(6000);
         driver.quit();
 
+        /*
+
+        You will be asked: "How do you handle dropdowns?" Answer:
+        "I use the Select class in Selenium. First, I identify the WebElement,
+        pass it into the Select constructor,
+        and then use methods like selectByVisibleText() or selectByIndex()."
+         */
+
     }
 }
