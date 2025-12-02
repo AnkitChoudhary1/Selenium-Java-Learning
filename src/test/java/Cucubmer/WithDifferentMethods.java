@@ -19,7 +19,7 @@ public class WithDifferentMethods {
         }
         //Was this added or not in the repo
         driver.quit();
-
+// Added a comment to chek the authorization
     }
 
     public static void login(WebDriver driver,String userName, String password) throws InterruptedException {
