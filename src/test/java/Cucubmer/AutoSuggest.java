@@ -20,12 +20,20 @@ public class AutoSuggest {
         // The CSS selector usually targets the generic list items 'li' or 'a' tags
         List<WebElement> options = driver.findElements(By.xpath("//*[@class='ui-menu-item']"));
 
-        for(WebElement option : options){
-            if(option.getText().equalsIgnoreCase("india")){
-                option.click();
-            }
-        }
+//        for(WebElement option : options){
+//            if(option.getText().equalsIgnoreCase("india")){
+//                option.click();
+//            }
+//        }
+
+        options.stream()
+                .filter(option -> option.getText().equalsIgnoreCase("India"))
+                .findFirst()
+                .ifPresent(WebElement::click);
         System.out.println("The click was a success ");
+        // 6. Verify the value in the input box
+        // REMEMBER: Use getAttribute("value") for input fields!   but it was deprecated
+        //now we had to use getDomProperty
         String value = driver.findElement(By.xpath("//*[@id='autosuggest']")).getDomProperty("value");
         System.out.println("The value is = "+value);
 
