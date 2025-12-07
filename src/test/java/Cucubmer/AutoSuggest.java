@@ -29,6 +29,8 @@ public class AutoSuggest {
         String value = driver.findElement(By.xpath("//*[@id='autosuggest']")).getDomProperty("value");
         System.out.println("The value is = "+value);
 
+        driver.quit();
+
 
 
 
