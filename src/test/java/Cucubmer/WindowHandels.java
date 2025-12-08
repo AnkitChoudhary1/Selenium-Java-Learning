@@ -12,7 +12,7 @@ public class WindowHandels {
     public static void main(String[] args){
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("https://rahulshettyacademy.com/loginpagePractise/#\"");
+        driver.get("https://rahulshettyacademy.com/loginpagePractise/#");
         driver.findElement(By.xpath("//*[@class='blinkingText']")).click();
 
         //the above click opens a new tab now we need to store all the id's
