@@ -13,10 +13,6 @@ public class ActionsDemo {
         driver.manage().window().maximize();
         driver.get("https://www.amazon.in/");
         Actions a = new Actions(driver);
-//        WebElement start = driver.findElement(By.xpath("//*[@alt='Continue shopping']"));
-//        //Move cursor to the element start then click on it
-//        a.moveToElement(start).build().perform();
-//        a.click();
 
         //Hover to the sign in location
         WebElement move = driver.findElement(By.xpath("//*[@id='nav-link-accountList']"));
@@ -27,9 +23,6 @@ public class ActionsDemo {
         a.moveToElement(search).click().keyDown(Keys.SHIFT).sendKeys("toys").doubleClick().build().perform();
         System.out.println("Execution done");
         driver.quit();
-
-
-//
 
     }
 }
