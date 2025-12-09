@@ -10,7 +10,7 @@ import java.util.List;
 
 public class CalendarExample {
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws InterruptedException {
         ChromeOptions options = new ChromeOptions();
 
         // Add incognito argument
@@ -18,15 +18,12 @@ public class CalendarExample {
         WebDriver driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.get("https://www.skyscanner.co.in/");
+        Thread.sleep(6000);
         //clicking on calendar
         driver.findElement(By.xpath("//*[@aria-label='Please select your departure date']")).click();
-        String expectedMonth="March";
-        String expecteDate="21";
+        String expectedMonth="November";
+        String expecteDate="30";
 
-       // String firstMonth =driver.findElement(By.xpath("(//*[@class='BpkText_bpk-text__M2E2N BpkText_bpk-text--heading-4__ZWMwM CustomCalendar_MonthName__NjQwY'])[1]")).getText();
-        //String secondMonth =driver.findElement(By.xpath("(//*[@class='BpkText_bpk-text__M2E2N BpkText_bpk-text--heading-4__ZWMwM CustomCalendar_MonthName__NjQwY'])[2]")).getText();
-
-        // (//*[@class="CustomCalendar_WeekContainer__MDhmZ"])[2]//*[@class='CustomCalendar_DayContainer__ODhlM' and @aria-hidden='false']//button
         while(true){
             String secondMonth =driver.findElement(By.xpath("(//*[@class='BpkText_bpk-text__M2E2N BpkText_bpk-text--heading-4__ZWMwM CustomCalendar_MonthName__NjQwY'])[2]")).getText();
             if(secondMonth.equals(expectedMonth)){
