@@ -14,15 +14,18 @@ public class Practise1 {
         driver.get("https://rahulshettyacademy.com/seleniumPractise/");
         List<WebElement> list = driver.findElements(By.xpath("//*[@class='product-name']"));
 String vegetable ="Cucumber";
-        for(WebElement l : list){
-            String[] veg =l.getText().split(" -");
-            if(vegetable.equals(veg[0])){
-                driver.findElement(By.xpath("//*[contains(text(), '"+veg[0]+"')]/parent::*[@class='product']//button")).click();
+        String[] itemsNeeded = {"Cucumber", "Brocolli", "Beetroot"};
+        for(int i=0; i<3; i++) {
+            for (WebElement l : list) {
+                String[] veg = l.getText().split(" -");
+                if (itemsNeeded[i].equals(veg[0])) {
+                    driver.findElement(By.xpath("//*[contains(text(), '" + veg[0] + "')]/parent::*[@class='product']//button")).click();
+                    System.out.println(veg[0]);
+                    break;
+                }
                 System.out.println(veg[0]);
-                break;
             }
-            System.out.println(veg[0]);
         }
-
+        driver.quit();
     }
 }
