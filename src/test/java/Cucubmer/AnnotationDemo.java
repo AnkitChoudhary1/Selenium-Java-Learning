@@ -20,13 +20,13 @@ public class AnnotationDemo {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
     }
 
-    @Test
+    @Test(priority =1)
     public void googleTest(){
         driver.get("https://www.google.com/");
         System.out.println(driver.getTitle());
     }
 
-    @Test
+    @Test(priority =2)
     public void amazonTest(){
         driver.get("https://www.amazon.com/");
         System.out.println(driver.getTitle());

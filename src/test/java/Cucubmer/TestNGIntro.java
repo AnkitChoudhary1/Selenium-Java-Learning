@@ -2,14 +2,13 @@ package Cucubmer;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 public class TestNGIntro {
 
 
 
 
         // @Test tells Java: "This is a test case. Run it!"
-        @Test
+        @Test(priority = 1)
         public void demoTest() {
             System.out.println("Hello! This is my first TestNG test.");
 
@@ -18,7 +17,7 @@ public class TestNGIntro {
             Assert.assertEquals("Google", "Google");
         }
 
-        @Test
+        @Test(priority =2)
         public void secondTest() {
             System.out.println("This is the second test case.");
         }
