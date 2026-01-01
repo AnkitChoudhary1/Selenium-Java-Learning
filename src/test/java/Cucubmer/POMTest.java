@@ -8,19 +8,20 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.InventoryPage;
 import pages.LoginPage;
+import testComponents.BaseTest;
 
 import java.time.Duration;
 
-public class POMTest {
-    WebDriver driver;
-    @BeforeMethod
-    public void setup(){
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        driver.get("https://www.saucedemo.com/");
-
-    }
+public class POMTest extends BaseTest {
+//    WebDriver driver;
+//    @BeforeMethod
+//    public void setup(){
+//        driver = new ChromeDriver();
+//        driver.manage().window().maximize();
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+//        driver.get("https://www.saucedemo.com/");
+//
+//    }
 
     @Test
     public void login(){
@@ -42,8 +43,8 @@ public class POMTest {
     }
 
 
-    @AfterMethod
-    public void teardown(){
-        driver.quit();
-    }
+//    @AfterMethod
+//    public void teardown(){
+//        driver.quit();
+//    }
 }
