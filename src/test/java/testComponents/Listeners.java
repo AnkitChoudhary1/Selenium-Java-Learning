@@ -4,11 +4,14 @@ package testComponents;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-public class Listeners implements ITestListener {
+import java.io.IOException;
+
+public class Listeners extends BaseTest implements ITestListener {
 
     ExtentReports extent = ExtentReporterNG.getReportObject();
     ExtentTest test;
@@ -30,9 +33,33 @@ public class Listeners implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
-        // Log the error message to the report
+        // 1. Log the failure error
         extentTest.get().fail(result.getThrowable());
+
+        // 2. Capture the Driver from the failing test method
+        // (This uses Java Reflection to "steal" the driver field from the test class)
+        WebDriver driver = null;
+        try {
+            driver = (WebDriver) result.getTestClass().getRealClass().getField("driver").get(result.getInstance());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // 3. Take Screenshot and Attach to Report
+        try {
+            String filePath = getScreenshot(result.getMethod().getMethodName(), driver);
+            // This line adds the screenshot to the report
+            extentTest.get().addScreenCaptureFromPath(filePath, result.getMethod().getMethodName());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+    // Quick Fix: You need to extend BaseTest in Listeners to use 'getScreenshot'
+    // OR create an object of BaseTest.
+    // SIMPLEST WAY: Make 'Listeners' extend 'BaseTest'
+    // Change: public class Listeners extends BaseTest implements ITestListener {
 
     @Override
     public void onFinish(ITestContext context) {
